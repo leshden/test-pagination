@@ -1,7 +1,7 @@
-import './App.css';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Posts from './components/Posts';
+import Pagination from './components/Pagination';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -24,10 +24,13 @@ function App() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  const paginate = (number) => setCurrentPage(number)
+
   return (
     <div className="container mt-5">
       <h1 className='text-primary mb-3'>App</h1>
       <Posts posts={currentPosts} loading={loading} />
+      <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
     </div>
   );
 }
