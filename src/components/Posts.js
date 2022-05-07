@@ -1,8 +1,9 @@
 import React from 'react';
+import PostsLoading from './PostsLoading';
 
 const Posts = ({posts, loading}) => {
   if (loading) {
-    return <h2>Loading...</h2>
+    return <PostsLoading />
   }
 
   return(
